@@ -1,0 +1,103 @@
+1. Write a PL/SQL block to calculate the incentive of an employee whose ID is 110.
+
+declare
+v_employee_id employees.employee_id%type = 110;
+v_salary employees.salary%type;
+
+begin
+select salary into v_salary from employees where employee_id = v_employee_id;
+end;
+
+2. Write a PL/SQL block to show an invalid case-insensitive reference to a quoted and without quoted user-defined identifier.
+
+declare
+someString varchar(20);
+begin
+somestring := "string";
+end;
+
+3. Write a PL/SQL block to show a reserved word can be used as a user-define identifier.
+
+declare
+v_employee_name employees.employee_name%type;
+v_reversed varchar(20);
+
+begin
+select employee_name into v_employee_name from employees;
+len := Length(v_employee_name);
+for i in reverse 1.. len loop
+	v_reversed := v_reversed || Substr(v_employee_name, i, 1);
+end loop;
+dbms_output.Put_line(v_reversed);
+end;
+
+4. Write a PL/SQL block to show the result to neglect double quotation marks in reserved word identifier.
+
+declare
+str varchar(20);
+newStr varchar(20);
+len number;
+
+begin
+str := 'this is "a" string';
+len := Length(str);
+for i in reverse 1.. len loop
+	newStr := newStr || Substr(str, i, 1);
+end loop;
+dbms_output.Put_line(newStr);
+end;
+
+5. Write a PL/SQL block to show the result to neglect the case sensitivity of 
+a user defined identifier which is also a reserved word.
+
+
+
+
+
+6. Write a PL/SQL block to explain single and multiline comments.
+
+begin
+-- This is a single line comment, usually used for brief explanations or justifications
+
+/*
+This is a multiline comment, it marks all words between the opening and closing tags
+as comments. This will be usually used to explain large blocks of code
+or as documentation
+
+*/
+end;
+
+7. Write PL/SQL blocks to show the declaration of variables.
+
+declare
+str varchar(20) := 'some string';
+num number := 10;
+
+begin
+
+end;
+
+8. Write PL/SQL blocks to show the scope and visibility of local and global identifiers.
+
+declare
+glob_str varchar(20) := "global";
+
+begin
+
+declare
+loc_str varchar(20) := "local";
+
+begin
+end;
+end;
+
+10. Write a PL/SQL block to adjust the salary of the employee whose ID 122.
+
+declare
+v_employee_id employees.employee_id%type := 122;
+
+begin
+update employees
+set salary 3500
+where employee_id == v_employee_id;
+end;
